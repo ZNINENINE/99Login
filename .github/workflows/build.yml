@@ -1,0 +1,35 @@
+name: Build 99Login
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Compilar plugin com Maven
+        run: mvn clean package
+
+      - name: Upload do artefato compilado
+        uses: actions/upload-artifact@v4
+        with:
+          name: 99Login
+          path: target/*.jar
