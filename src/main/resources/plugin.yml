@@ -1,0 +1,9 @@
+name: 99Login
+main: com.nin9.loginplugin.LoginPlugin
+version: 1.0.0
+api-version: 1.21
+commands:
+  login:
+    description: Login com sua senha
+  registrar:
+    description: Registrar uma nova senha
